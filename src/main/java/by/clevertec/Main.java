@@ -3,8 +3,8 @@ package by.clevertec;
 
 import by.clevertec.domain.Customer;
 import by.clevertec.helper.CreatorStructure;
+import by.clevertec.util.JsonDeserializer;
 import by.clevertec.util.JsonSerializers;
-import by.clevertec.util.Parser;
 
 
 public class Main {
@@ -15,9 +15,10 @@ public class Main {
         String json = serializer.toJson(customer);
         System.out.println("Serialized JSON: " + json);
 
-        Parser parser = new Parser();
-        Object parse = parser.parse(json);
-        System.out.printf("parse string result : \n" + parse.toString());
+        JsonDeserializer deserialize = new JsonDeserializer();
+        Customer parsed = deserialize.fromJson(json,Customer.class);
+        System.out.println("Deserialized JSON:" + parsed);
+        System.out.print("test for equals : " + parsed.equals(customer));
 
     }
 }

@@ -21,6 +21,6 @@ public class CreatorStructure {
         Order order1 = new Order(UUID.randomUUID(), new ArrayList<>(Arrays.asList(bear, milk)), OffsetDateTime.now());
         Order order2 = new Order(UUID.randomUUID(), new ArrayList<>(Arrays.asList(bear, milk)), OffsetDateTime.now().plusHours(1));
 
-        return new Customer(UUID.randomUUID(), "Petr", "Sidorov", LocalDate.now(), List.of(order1,order2),2);
+        return new Customer(UUID.randomUUID(), "Petr", "Sidorov", LocalDate.now(), List.of(order1,order2));
     }
 }

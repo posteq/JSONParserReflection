@@ -43,7 +43,7 @@ public class JsonSerializers {
                 Field field = fields[i];
                 field.setAccessible(true);
                 Object value = field.get(obj);
-                json.append("\"").append(field.getName()).append("\": ").append(toJson(value));
+                json.append("\"").append(field.getName()).append("\":").append(toJson(value));
 
                 if (i < fields.length - 1) {
                     json.append(",");
@@ -56,7 +56,8 @@ public class JsonSerializers {
     }
 
     private String offsetDateTimeToJson(OffsetDateTime obj) {
-        return "\"" + obj.format(DateTimeFormatter.ISO_DATE_TIME) + "\"";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXXX");
+        return "\"" + obj.format(dateTimeFormatter) + "\"";
     }
 
     private String localDateToJson(LocalDate obj) {
